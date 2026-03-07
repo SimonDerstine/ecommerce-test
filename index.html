@@ -3,9 +3,69 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title></title>
+  <title>Simon's garden</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body data-page="home">
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <span class="brand-logo" aria-hidden="true">🌱</span>
+        <div>
+          <a href="index.html" class="brand-name">Simon's Garden</a>
+          <p class="brand-tagline">Fresh greens from your windowsill</p>
+        </div>
+      </div>
+      <nav class="nav">
+        <a href="index.html" class="nav-link nav-link-active">Home</a>
+        <a href="product.html" class="nav-link">Shop</a>
+      </nav>
+    </div>
+  </header>
 
+  <main>
+    <section class="hero">
+      <div class="container hero-inner">
+        <div class="hero-text">
+          <h1>Grow fresh microgreens at home</h1>
+          <p>Simple seed pouches that turn your windowsill into a tiny urban garden.</p>
+          <a class="btn btn-primary" href="product.html">View Arugula Seed Pouch</a>
+        </div>
+        <div class="hero-card" aria-hidden="true">
+          <div class="hero-illustration">
+            <div class="pot"></div>
+            <div class="sprout sprout-1"></div>
+            <div class="sprout sprout-2"></div>
+            <div class="sprout sprout-3"></div>
+          </div>
+          <p class="hero-note">Ready to harvest in just 7–10 days.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">What are microgreens?</h2>
+        <p class="section-text">
+          Microgreens are young, tender greens harvested just after the first leaves appear. They are packed
+          with flavor and nutrients, and can be grown in a small tray on a sunny windowsill using only seeds,
+          soil, and water.
+        </p>
+        <p class="section-text">
+          Simon's Garden focuses on simple, beginner-friendly seed pouches so you can enjoy fresh
+          greens without special equipment or a backyard.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>&copy; <span id="footer-year"></span> Simon's Garden. All rights reserved.</p>
+      <p class="footer-note">A simple demo shop for testing ecommerce tracking.</p>
+    </div>
+  </footer>
+
+  <script src="script.js" defer></script>
 </body>
 </html>

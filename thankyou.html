@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Confirmation | Simon's Garden</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="thankyou">
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <span class="brand-logo" aria-hidden="true">🌱</span>
+        <div>
+          <a href="index.html" class="brand-name">Simon's Garden</a>
+          <p class="brand-tagline">Fresh greens from your windowsill</p>
+        </div>
+      </div>
+      <nav class="nav">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="product.html" class="nav-link">Shop</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="section">
+      <div class="container narrow">
+        <div class="confirmation-card">
+          <h1>Thank you for your order</h1>
+          <p class="section-text">
+            Your microgreen seeds are on their way (in spirit). Below are the mock order details used for
+            testing and tracking.
+          </p>
+
+          <div class="order-summary">
+            <h2 class="section-title">Order summary</h2>
+            <dl class="order-details">
+              <div class="order-row">
+                <dt>Order ID</dt>
+                <dd id="order-id">ORD-1001</dd>
+              </div>
+              <div class="order-row">
+                <dt>Product Name</dt>
+                <dd id="order-product-name">Arugula Seed Pouch</dd>
+              </div>
+              <div class="order-row">
+                <dt>SKU</dt>
+                <dd id="order-sku">ARUGULA-001</dd>
+              </div>
+              <div class="order-row">
+                <dt>Category</dt>
+                <dd id="order-category">Seeds</dd>
+              </div>
+              <div class="order-row">
+                <dt>Price</dt>
+                <dd>
+                  <span id="order-price">2.00</span>
+                  <span id="order-currency">USD</span>
+                </dd>
+              </div>
+              <div class="order-row">
+                <dt>Quantity</dt>
+                <dd id="order-quantity">1</dd>
+              </div>
+              <div class="order-row order-row-total">
+                <dt>Subtotal</dt>
+                <dd>
+                  <span id="order-subtotal">2.00</span>
+                  <span>USD</span>
+                </dd>
+              </div>
+            </dl>
+          </div>
+
+          <p class="small-note">
+            This page is intentionally simple so it can be used as a controlled environment for future
+            ecommerce and conversion tracking tests.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>&copy; <span id="footer-year"></span> Simon's Garden. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
