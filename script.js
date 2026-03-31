@@ -4,6 +4,9 @@ document.addEventListener("DOMContentLoaded", function () {
   const body = document.body;
   const page = body.dataset.page;
 
+  ensureDataLayer();
+  captureImpactClickId();
+  pushImpactIdentify();
   setFooterYear();
 
   if (page === "product") {
@@ -85,15 +88,7 @@ function initThankYouPage() {
     subtotal: subtotal,
   };
 
-  // Future impact.com conversion tracking will use values from orderData here
-  //
-  // Example (pseudo-code only, not active):
-  // impactTracking.trackConversion({
-  //   orderId: orderData.orderId,
-  //   amount: orderData.subtotal,
-  //   currency: orderData.currency,
-  //   sku: orderData.sku,
-  // });
+  pushImpactConversion(window.orderData);
 }
 
 function setText(id, value) {
@@ -101,5 +96,82 @@ function setText(id, value) {
   if (el) {
     el.textContent = value;
   }
+}
+
+function ensureDataLayer() {
+  window.dataLayer = window.dataLayer || [];
+}
+
+function captureImpactClickId() {
+  const params = new URLSearchParams(window.location.search);
+  const clickId = params.get("im_ref");
+
+  if (clickId) {
+    try {
+      localStorage.setItem("impact_click_id", clickId);
+    } catch (e) {
+      // localStorage may be blocked; fail silently.
+    }
+  }
+}
+
+function getImpactClickId() {
+  try {
+    return localStorage.getItem("impact_click_id") || "";
+  } catch (e) {
+    return "";
+  }
+}
+
+function getOrCreateCustomProfileId() {
+  try {
+    const existingId = localStorage.getItem("impact_custom_profile_id");
+    if (existingId) return existingId;
+
+    const newId = crypto && crypto.randomUUID ? crypto.randomUUID() : "cpid-" + Date.now();
+    localStorage.setItem("impact_custom_profile_id", newId);
+    return newId;
+  } catch (e) {
+    return "cpid-" + Date.now();
+  }
+}
+
+function pushImpactIdentify() {
+  window.dataLayer.push({
+    event: "impact_identify",
+    impact: {
+      customerId: "",
+      customerEmailSha1: "",
+      customProfileId: getOrCreateCustomProfileId(),
+      clickId: getImpactClickId(),
+    },
+  });
+}
+
+function pushImpactConversion(orderData) {
+  window.dataLayer.push({
+    event: "impact_conversion",
+    impact: {
+      eventId: 70289,
+      orderId: orderData.orderId,
+      customProfileId: getOrCreateCustomProfileId(),
+      customerId: "",
+      customerEmailSha1: "",
+      customerStatus: "",
+      currencyCode: orderData.currency,
+      orderPromoCode: "",
+      orderDiscount: 0,
+      clickId: getImpactClickId(),
+      items: [
+        {
+          subTotal: Number(orderData.subtotal.toFixed(2)),
+          category: orderData.category,
+          sku: orderData.sku,
+          quantity: orderData.quantity,
+          name: orderData.productName,
+        },
+      ],
+    },
+  });
 }
 
