@@ -140,8 +140,8 @@ function pushImpactIdentify() {
   window.dataLayer.push({
     event: "impact_identify",
     impact: {
-      customerId: "",
-      customerEmailSha1: "",
+      customerId: "123456",
+      customerEmailSha1: "3reihr4btjeow4uihfkewng",
       customProfileId: getOrCreateCustomProfileId(),
       clickId: getImpactClickId(),
     },
@@ -155,11 +155,11 @@ function pushImpactConversion(orderData) {
       eventId: 70289,
       orderId: orderData.orderId,
       customProfileId: getOrCreateCustomProfileId(),
-      customerId: "",
-      customerEmailSha1: "",
-      customerStatus: "",
+      customerId: "123456",
+      customerEmailSha1: "3reihr4btjeow4uihfkewng",
+      customerStatus: "New",
       currencyCode: orderData.currency,
-      orderPromoCode: "",
+      orderPromoCode: "SIMON DISCOUNT",
       orderDiscount: 0,
       clickId: getImpactClickId(),
       items: [
