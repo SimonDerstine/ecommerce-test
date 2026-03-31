@@ -141,7 +141,7 @@ function pushImpactIdentify() {
     event: "impact_identify",
     impact: {
       customerId: "123456",
-      customerEmailSha1: "3reihr4btjeow4uihfkewng",
+      customerEmail: "3reihr4btjeow4uihfkewng",
       customProfileId: getOrCreateCustomProfileId(),
       clickId: getImpactClickId(),
     },
@@ -156,7 +156,7 @@ function pushImpactConversion(orderData) {
       orderId: orderData.orderId,
       customProfileId: getOrCreateCustomProfileId(),
       customerId: "123456",
-      customerEmailSha1: "3reihr4btjeow4uihfkewng",
+      customerEmail: "3reihr4btjeow4uihfkewng",
       customerStatus: "New",
       currencyCode: orderData.currency,
       orderPromoCode: "SIMON DISCOUNT",
